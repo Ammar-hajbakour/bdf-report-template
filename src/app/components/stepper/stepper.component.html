@@ -1,0 +1,6 @@
+<ng-container *ngIf="steps && steps.length > 0">
+    <ul class="stepper">
+        <li *ngFor="let step of steps; let i = index" class="stepper__item" 
+        [class.complete]="i < active" [class.active]="i === active">{{step}}</li> 
+    </ul>    
+</ng-container>

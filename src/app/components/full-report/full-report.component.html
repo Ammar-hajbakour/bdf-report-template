@@ -1,0 +1,515 @@
+<ng-container *ngIf="report">
+    <div class="page">
+        <img class="cover section-image" src="assets/images/1.png" alt="intro-image">
+        <h2 class="organization-name">{{report.companyName}}</h2>
+    </div>
+
+    <div class="page">
+        <img class="cover section-image" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <p style="color: #444;" class="text-center">بسم الله الرحمن الرحيم</p>
+            
+            <h2>ما هو روبوت قدرات المنظمات غير الربحية؟</h2>
+            <p>روبوت رقمي يساعد الجمعيات غير الربحية على تقييم قدراتها بالاعتماد على نموذج علمي ومعياري متطور ومحكم.
+                يفيد
+                المنظمة عند استخدامه في:
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>التقييم المعياري</th>
+                        <th>التخطيط</th>
+                        <th>الإدارة الاستراتيجية</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>تقييم قدرات المنظمة في أربعة مستويات (التأسيس، التمرس، التطوّر، الاحترافية).</td>
+                        <td>يزود تقرير توصيات المقياس بأداة تحليلية عميقة وفعالة تساعد المنظمة على التخطيط الاستراتيجي.
+                        </td>
+                        <td>تستخدم الإدارة هذا المقياس كمؤشر استراتيجي تقيس فيه قدراتها بشكل سنوي، وتقيم مدى تطور
+                            قدراتها
+                            خلال العام.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>عن الجهة المطورة</h2>
+            <p>
+                أعدّ المحتوى العلمي لهذا العمل مركز بناء الطاقات بالاعتماد على مقياس قدرات المنظمات الشبابية الذي طورته
+                مؤسسة الراجحي الخيرية، ويعتمد على تقنية HCD Benchmarker في تكنولوجيا البيانات والذكاء الاصطناعي.
+            </p>
+            <h2>عن النموذج العلمي للروبوت</h2>
+            <p>
+                درسنا من خلال هذا الروبوت ستة أبعاد متكاملة من قدرات منظمتك، والتي نوضحها في الشكل الآتي:
+            </p>
+            <div class="diagram">
+                <div class="triangle"></div>
+                <ul>
+                    <li>االأثر الاجتماعي</li>
+                    <li>الاستدامة</li>
+                    <li>االتفعيل اللاجتماعي</li>
+                    <li>الإدارة والعمليات</li>
+                    <li>تصميم الحلول</li>
+                    <li>القيادة</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <div class="diagram">
+                <div class="triangle"></div>
+                <ul>
+                    <li>االأثر الاجتماعي</li>
+                    <li>الاستدامة</li>
+                    <li>االتفعيل اللاجتماعي</li>
+                    <li>الإدارة والعمليات</li>
+                    <li>تصميم الحلول</li>
+                    <li>القيادة</li>
+                </ul>
+            </div>
+            <p>حظيت منظمتكم بدرجة:</p>
+            <h2 class="result-percentage">
+                {{report.percentageResult}}%
+            </h2>
+            <p>من المؤشر العام لقدرات المنظمة، وهي تدل على أن منظمتكم هي في:</p>
+            <h2>{{report.result}}</h2>
+            <p>علماً أن جميع المراحل الأربعة لقدرات المنظمة هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(level)"></app-stepper>
+            <h2>لذلك نوصيكم بما يلي:</h2>
+            <p>
+                المنظمة في مرحلة التطور، والذي يعني أنها تمتلك من القدرات ما يمكنها من تنفيذ مشاريع نوعية، وبالذات لديها تحدّ في تطوير عدد من الجوانب في قدراتها المؤسسية. 
+
+لذا من الضروري أن تنطلق المنظمة من مواردها التي تتميز فيها في النمو وصنع الأثر، وبذات الوقت تخصص نسبة من مواردها في تطوير نفسها وتعزيز قدراتها في المجالات التي تحتاج إلى تطوير. وتذكر أنه لا توجد نقاط ضعف وقوة، هنالك موارد ينبغي للمنظمة أن تستثمرها أفضل استثمار في صنع الأثر والنمو، ثم لا مانع أن تعمل على تطوير قدراتها في مجالات أخرى. 
+
+وتطوير قدراتها لا يقتصر على التطوير الذاتي لقدراتها، بل قد يكون من خلال التحالف مع منظمات أخرى تتكامل فيما بينها، بحيث يضيف كل طرف موارده التي يتميز بها للطرف المتحالف الآخر. 
+            </p>
+        </div>
+    </div>
+
+
+    <ng-container *ngFor="let section of allSections">
+        <ng-container [ngSwitch]="section.name">
+            <ng-container *ngSwitchCase="'leadership'">
+                <ng-container *ngTemplateOutlet="leadershipSection; context: {section}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'solutionDesign'">
+                <ng-container *ngTemplateOutlet="solutionDesignSection; context: {section}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'managementAndOperations'">
+                <ng-container *ngTemplateOutlet="managementAndOperationsSection; context: {section}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'socialActivation'">
+                <ng-container *ngTemplateOutlet="socialActivationSection; context: {section}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'sustainability'">
+                <ng-container *ngTemplateOutlet="sustainabilitySection; context: {section}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'socialImpact'">
+                <ng-container *ngTemplateOutlet="socialImpactSection; context: {section}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchDefault></ng-container>
+        </ng-container>
+    </ng-container>
+
+</ng-container>
+
+<ng-template #tableHelper let-elements="elements">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let el of elements | keyvalue">{{el.key}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td *ngFor="let el of elements | keyvalue">
+                    <ul>
+                        <li *ngFor="let c of getElementValues(el.value)">{{c}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<!-- SECTIONS -->
+<ng-template #leadershipSection let-section="section">
+
+    <div class="page">
+        <img class="cover section-image" src="{{section.image}}" alt="{{section.name}}">
+        <div class="wrapper"></div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">المجال الأول: القيادة</h2>
+            <p>درسنا لديكم من خلال عدة أسئلة مجال القدرات القيادية، وحلّلنا بشكل مفصل هذه السمات:</p>
+
+            <ng-container *ngTemplateOutlet="tableHelper; context: {elements: section.analysis}"></ng-container>
+
+            <p>وتبين من التحليل في هذا المجال ما يلي: </p>
+            <h4>المنظمة في مرحلة الممارسة في المجال القيادي </h4>
+            <p>السمة موجودة، لكن غير فاعلة، أو غير معتمدة. وتحتاج المنظمة في هذه المرحلة إلى بناء قدراتها في ممارسة هذه
+                السمة. </p>
+
+            <p>علماً أن المستويات الأربعة لهذه السمعة بشكل عام هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(section.level)"></app-stepper>
+
+
+        </div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">ماذا يجب أن نفعل؟ </h2>
+            <ng-container
+                *ngTemplateOutlet="sectionRecommendationsHelper; context: {name: section.name}"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #solutionDesignSection let-section="section">
+    <div class="page">
+        <img class="cover section-image" src="{{section.image}}" alt="{{section.name}}">
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">المجال الثاني: تصميم الحلول </h2>
+            <p>درسنا مجال تصميم الحلول لديكم من خلال عدة مؤشرات، وحلّلنا بشكل مفصل هذه السمات: </p>
+            <ng-container *ngTemplateOutlet="tableHelper; context: {elements: section.analysis}"></ng-container>
+            <p>وتبين من التحليل في هذا المجال ما يلي: </p>
+            <h4>المنظمة في مرحلة التطوير في مجال تصميم الحلول </h4>
+            <p>السمة موجودة، وفاعلة جزئياً. وتحتاج المنظمة في هذه المرحلة إلى تعزيز قدراتها في ممارسة هذه السمة بشكل أفضل. </p>
+            <p>علماً أن المستويات الأربعة لهذه السمعة بشكل عام هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(section.level)"></app-stepper>
+        </div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">ماذا يجب أن نفعل؟ </h2>
+            <ng-container *ngTemplateOutlet="sectionRecommendationsHelper; context:{name: section.name}"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #managementAndOperationsSection let-section="section">
+    <div class="page">
+        <img class="cover section-image" src="{{section.image}}" alt="{{section.name}}">
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">المجال الثالث: الإدارة والعمليات </h2>
+            <p>درسنا مجال الإدارة والعمليات لديكم من خلال عدة مؤشرات، وحلّلنا بشكل مفصل هذه السمات: </p>
+            <ng-container *ngTemplateOutlet="tableHelper; context: {elements: section.analysis}"></ng-container>
+            <p>وتبين من التحليل في هذا المجال ما يلي: </p>
+            <h4>المنظمة في مرحلة التطوير في مجال الإدارة والعمليات </h4>
+            <p>السمة موجودة، وفاعلة جزئياً. وتحتاج المنظمة في هذه المرحلة إلى تعزيز قدراتها في ممارسة هذه السمة بشكل أفضل. </p>
+            <p>علماً أن المستويات الأربعة لهذه السمعة بشكل عام هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(section.level)"></app-stepper>
+        </div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">ماذا يجب أن نفعل؟ </h2>
+            <ng-container *ngTemplateOutlet="sectionRecommendationsHelper; context:{name: section.name}"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #socialActivationSection let-section="section">
+    <div class="page">
+        <img class="cover section-image" src="{{section.image}}" alt="{{section.name}}">
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">المجال الرابع: التفعيل الاجتماعي </h2>
+            <p>درسنا مجال التفعيل الاجتماعي لديكم من خلال عدة مؤشرات، وحلّلنا بشكل مفصل هذه السمات: </p>
+            <ng-container *ngTemplateOutlet="tableHelper; context: {elements: section.analysis}"></ng-container>
+            <p>وتبين من التحليل في هذا المجال ما يلي: </p>
+            <h4>المنظمة في مرحلة الممارسة في مجال التفعيل الاجتماعي </h4>
+            <p>السمة موجودة، لكن غير فاعلة، أو غير معتمدة. وتحتاج المنظمة في هذه المرحلة إلى بناء قدراتها في ممارسة هذه السمة. </p>
+            <p>علماً أن المستويات الأربعة لهذه السمعة بشكل عام هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(section.level)"></app-stepper>
+        </div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">ماذا يجب أن نفعل؟ </h2>
+            <ng-container *ngTemplateOutlet="sectionRecommendationsHelper; context:{name: section.name}"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #sustainabilitySection let-section="section">
+    <div class="page">
+        <img class="cover section-image" src="{{section.image}}" alt="{{section.name}}">
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">المجال الخامس: الاستدامة </h2>
+            <p>درسنا مجال الاستدامة لديكم من خلال عدة مؤشرات، وحلّلنا بشكل مفصل هذه السمات: </p>
+            <ng-container *ngTemplateOutlet="tableHelper; context: {elements: section.analysis}"></ng-container>
+            <p>وتبين من التحليل في هذا المجال ما يلي: </p>
+            <h4>السمة موجودة، وفاعلة جزئياً. وتحتاج المنظمة في هذه المرحلة إلى تعزيز قدراتها في ممارسة هذه السمة بشكل أفضل. </h4>
+            <p></p>
+            <p>علماً أن المستويات الأربعة لهذه السمعة بشكل عام هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(section.level)"></app-stepper>
+        </div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">ماذا يجب أن نفعل؟ </h2>
+            <ng-container *ngTemplateOutlet="sectionRecommendationsHelper; context:{name: section.name}"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #socialImpactSection let-section="section">
+    <div class="page">
+        <img class="cover section-image" src="{{section.image}}" alt="{{section.name}}">
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">المجال السادس: الأثر الاجتماعي </h2>
+            <p>درسنا مجال الأثر الاجتماعي لديكم من خلال عدة مؤشرات، وحلّلنا بشكل مفصل هذه السمات: </p>
+            <ng-container *ngTemplateOutlet="tableHelper; context: {elements: section.analysis}"></ng-container>
+            <p>وتبين من التحليل في هذا المجال ما يلي: </p>
+            <h4>المنظمة في مرحلة التأسيس في الأثر الاجتماعي </h4>
+            <p>هذه السمة غير موجودة وتحتاج إلى تأسيس كخطوة أولى، ثم تمكين المنظمة في ممارسة هذه السمة. </p>
+            <p>علماً أن المستويات الأربعة لهذه السمعة بشكل عام هي:</p>
+            <app-stepper [steps]="evaluationItems" [active]="getLevelIdx(section.level)"></app-stepper>
+        </div>
+    </div>
+    <div class="page">
+        <img class="cover" src="assets/images/2.png" alt="overall-assessment">
+        <div class="wrapper">
+            <h2 class="header3">ماذا يجب أن نفعل؟ </h2>
+            <ng-container *ngTemplateOutlet="sectionRecommendationsHelper; context:{name: section.name}"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<!-- RECOMMENDATIONS -->
+
+<ng-template #sectionRecommendationsHelper let-name="name">
+    <ng-container [ngSwitch]="name">
+        <ng-container *ngSwitchCase="'leadership'">
+            <ng-container *ngTemplateOutlet="leadershipRecommendations"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'solutionDesign'">
+            <ng-container *ngTemplateOutlet="solutionDesignRecommendations"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'managementAndOperations'">
+            <ng-container *ngTemplateOutlet="managementAndOperationsRecommendations"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'socialActivation'">
+            <ng-container *ngTemplateOutlet="socialActivationRecommendations"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'sustainability'">
+            <ng-container *ngTemplateOutlet="sustainabilityRecommendations"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'socialImpact'">
+            <ng-container *ngTemplateOutlet="socialImpactRecommendations"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchDefault></ng-container>
+    </ng-container>
+</ng-template>
+<ng-template #leadershipRecommendations>
+    <p>
+        المجال القيادي هو أولى الأوليات في المنظمة، ويزداد أهمية الأمر عندما تكون المنظمة ناشئة، فكما نعلم ليس المهم
+        المضي قدماً بسرعة، الأهم هو المسير بالاتجاه الصحيح (الاستراتيجية)، ووجود من يحدّد هذا الاتجاه الصحيح بالطبع
+        (القيادة).
+
+        وكون الجانب القيادي من الأمور التي تحتاج إلى تطوير كما تبين من التحليل، فهذا يجعل التطوير القيادي ذو أولوية،
+        لذلك نوصي في هذا الصدد ما يلي:
+    </p>
+    <ul>
+        <li>مراجعة وتطوير الرؤية والرسالة، والتحقق من كونها محفزة وواقعية وليست مجرد عبارات مكتوبة في الملف التعريفي.
+        </li>
+        <li>
+            مراجعة وتطوير الرؤية والرسالة، والتحقق من كونها محفزة وواقعية وليست مجرد عبارات مكتوبة في الملف التعريفي.
+        </li>
+        <li>
+            تطوير خطة استراتيجية رشيقة وبسيطة وقابلة للتنفيذ، وتساعد المنظمة على تحقيق أهدافها، لا تضع أهدافاً أكبر من
+            مواردكم، ولا أقل، واترك هامشاً للمخاطر.
+        </li>
+        <li>
+            مجلس الإدارة عامل حاسم ومحوري في نجاح المنظمة، فاحرص على وجود سياسات ضابطة ومحوكمة لعمل مجلس الإدارة، بحيث
+            يتم تفعيل المجلس في دعم المنظمة، وبذات الوقت لا تتداخل مهامهم وصلاحياتهم مع الفريق التنفيذي.
+        </li>
+    </ul>
+</ng-template>
+<ng-template #solutionDesignRecommendations>
+    <p>
+        مجال تصميم الحلول يأتي في المرحلة الثانية بعد التأسيس القيادي والاستراتيجي للمنظمة. ونقصد بتصميم الحلول تطوير
+        المنتجات والخدمات التي تلبي احتياجات المجتمع، والتي يمكن أن تكون على شكل مبادرات ومشاريع.
+
+        وتصميم الحلول ينبغي أن يتم مع المجتمع المستهدف نفسه، لذلك فإن قدرات المنظمة في تصميم الحلول ترتبط بقدرتها على
+        الاقتراب من الناس والابتكار معهم. ومنظمتك تواجه تحدياً في تطوير قدراتها في تصميم الحلول كما تبين من التحليل.
+
+        لذلك نوصي المنظمة في هذا الصدد بما يلي:
+    </p>
+    <ul>
+        <li>
+            تطوير أدوات لفهم احتياجات المستفيدين المستهدفين قبل تخطيط المشروع، بحيث تستخدم نتائج فهم الاحتياج في تصميم
+            الحل وتخطيط المشروع، مثل إجراء ورش ميدانية مع المستفيدين والتفكير معهم، وإجراء مقابلات معمقة مع الخبراء.
+        </li>
+        <li>
+            في المشاريع الكبيرة، من المهم إجراء تجربة مصغرة على عينة من خدمات ومنتجات المشروع مع عينة من المستفيدين، قبل
+            إطلاق المشروع بالكامل، فهذا يتيح تطوير المنتجات والخدمات واكتشاف المشاكل فيها سواء في المنتج نفسه، أو في
+            طريقة استخدامه، وفي ذلك حفظ للموارد وتعزيز لابتكارية المشروع.
+        </li>
+        <li>
+            النظر المعمق في بنود الرؤية الوطنية، وتحديد بند واحد على الأقل تساهم المنظمة في تحقيقه مهما كانت نسبة
+            المساهمة صغيرة، والأخذ بالحسبان لهذه المساهمة في تخطيط المنظمة بمختلف مستوياتها، على المستوى الاستراتيجي
+            ومستوى المشاريع. فذلك يوسع من النظرة الشمولية للمنظمة والتفكير الاستراتيجي بالمجتمع المحيط والمستقبل المقبل.
+        </li>
+    </ul>
+</ng-template>
+<ng-template #managementAndOperationsRecommendations>
+    <p>
+        بعد أن تتحدد وجهة المنظمة (القيادة)، وتحدّد كيف ستصل إلى هذه الوجهة وتصنع الأثر (تصميم الحلول)، المنظمة بحاجة
+        الآن إلى تحويل هذه الرؤية إلى واقع عملي من خلال قدرات إدارية وتشغيلية، وهو البعد الثالث في الأهمية والذي نسميه
+        الإدارة والعمليات.
+
+        منظمتك لديها قدرات متميزة في مجال الإدارة والعمليات كما تبين من التحليل، وهي لذا فهي بحاجة إلى المحافظة على هذا
+        التميز بالتوازي مع التحسين المستمر. لذلك نوصي المنظمة في هذا الصدد بما يلي:
+    </p>
+    <ul>
+        <li>
+            مراجعة الهيكل الإداري ليكون أكثر رشاقة بما يضمن استقرار العمليات على المدى البعيد مهما كبر حجم العمل، ونوصي
+            في هذا الصدد لاعتماد المنظمة على الهيكل الإداري المصفوفي بحيث يمكن للفرد أن يعمل مهمتين اثنتين مختلفتين،
+            إحداهما ترتبط بالعمليات مثل التسويق، والأخرى ترتبط بإحدى مشاريع المنظمة. مثل هذا النمط يناسب المنظمات غير
+            الربحية التي يرتكز جل عملها على المشاريع أكثر من العمليات. وهو ما يساهم في رشاقة عمل المنظمة ويعزز من
+            قدراتها في العمليات.
+        </li>
+        <li>
+            إن أكبر تحد يواجه الخطط الاستراتيجية هو التنفيذ، والتنفيذ لا يتحقق إلا بجودة خطة تنفيذ رشيقة ترتكز على ما
+            يهم فقط من أنشطة ومخرجات، وتتجنب أي نشاط لا يساهم في تحقيق الأهداف الاستراتيجية.
+        </li>
+        <li>
+            لا تغرقوا في استخدام المؤشرات وقياس كل ما يمكن قياسه. ينبغي على المنظمة أن تقيس ما يهم فقط ويرتبط بتحقيق
+            الأهداف الاستراتيجية.
+        </li>
+    </ul>
+</ng-template>
+<ng-template #socialActivationRecommendations>
+    <p>
+        المنظمة هي كيان اجتماعي لا ينبغي أن تعمل إلا من خلال دعم مجتمعي متبادل، فهي تقدم للمجتمع من خلال الدعم الذي تحصل
+        عليه من المجتمع بنفس الوقت.
+
+        ومجال التفعيل الاجتماعي يأتي في المرحلة الرابعة وفقاً للترتيب المنطقي للقدرات المؤسسية. فالمؤسسة حدّدت وجهتها،
+        ثم ابتكرت حلولها، نفّذت وتعلمت، والآن عندما تريد أن تتوسع وتعمّق من أثرها، فذلك لا يكون إلا من خلال تفعيل قدرات
+        المجتمع، وهو المرحلة الرابعة التي نسميها التفعيل الاجتماعي.
+
+        والمنظمة كما تبين من التحليل لا تفعّل قدرات المجتمع كما ينبغي، لذلك نوصي المنظمة في هذا الصدد بما يلي:
+    </p>
+
+
+    <ul>
+        <li>
+            التشارك العمودي:
+
+            مثال، مشروع تنمية مواهب اليتيم (قياس احتياجات اليتيم، وتقديم برامج تدريب ورعاية مواهب): المنظمة أ: تقدم
+            دعماً لـ ١٠٠ طفل يتيم، والمنظمة ب: تقدم دعماً لـ ١٠٠ طفل يتيم آخر.
+
+            الفائدة من ذلك هو: (١) تقاسم التكاليف الإدارية الثابتة (الإدارة المالية، التسويق، دورات تأهيل الفريق، ...)،
+            (٢) تعظيم الأثر الاجتماعي للمشروع، من خلال توسيع دائرة المستفيدين.
+        </li>
+        <li>
+            التشارك الأفقي:
+
+            مثال، مشروع تنمية مواهب اليتيم (قياس احتياجات اليتيم، وتقديم برامج تدريب ورعاية مواهب): المنظمة أ متخصصة في
+            التحليل والبحوث: تقيم احتياجات الأطفال الأيتام المستهدفين. المنظمة ب متخصصة في برامج التدريب الاجتماعي: تقدم
+            تدريباً لـ ٢٠٠ طفل يتيم.
+
+            الفائدة من ذلك هو توزع الأدوار بناءً على التخصص، وضمان احترافية أعلى في تنفيذ المشروع نتيجة لتركيز كل منظمة
+            على مجال واحد فقط وتركز مواردها فيه.
+        </li>
+    </ul>
+    <p>تفعيل المتطوعين أمر في غاية الأهمية وهو ثروة اجتماعية، فثمة العديد من الأفراد الذين يبحثون عن فرص للتطوع، رغبة
+        بفعل الخير وكسباً للخبرات، لذلك نوصي بإتاحة فرص التطوع في مختلف المشاريع. ومع تفعيل استقطاب المتطوعين، يجب أن
+        يكون هنالك نظام داعم لبيئة التطوع في المنظمة، بحيث توضع لهم عدد من الميزات إضافة إلى حقوقهم في العمل، وبالتوازي
+        حتى تتحقق الفائدة المرجوة من تطوعهم، لا بدّ أيضاً من تحديد واجباتهم ومسؤولياتهم في العمل. </p>
+
+</ng-template>
+<ng-template #sustainabilityRecommendations>
+    <p>
+        الاستدامة المالية لا تأتي من كثرة المشاريع وحجمها، الاستدامة المالية ترتبط بقدرة المنظمة على الاستمرار في العمل
+        حتى مع توقف المشاريع. فالاستدامة المالية تعكس قدرة المنظمة على صنع الأثر دون وجود دعم خارجي مباشر.
+
+        والمنظمة على ما يبدو تول اهتماماً للاستدامة كما تبين من نتائج التحليل، ولديها فرص عديدة لتعزيز استدامتها المالية
+        واستقرارها المالي عبر عدد من الأفكار والتوصيات:
+    </p>
+    <ul>
+        <li>
+            إذا لم تكن المنظمة قد أطلقت حتى الآن مشاريع استثمار اجتماعي فقد حان الوقت، ينبغي على المنظمة أن تطلق مشاريع
+            ومبادرات استثمار اجتماعي تشتمل على تقديم أثر مع وجود ربحية، والاستفادة من العديد من الأفكار الملهمة حول
+            العالم من قبيل مفهوم (One for One واحدة بواحدة)، وهو كمثال أن كل زبون يشتري من هذا الكتاب، سيحصل شخص آخر ذو
+            احتاج شديد على كتاب أيضاً. أو مفهوم البيع بسعر التكلفة لأصحاب الاحتياج الشديد، مع البيع بسعر السوق للأناس
+            العاديين، وهكذا.
+        </li>
+        <li>
+            تعزيز علاقتك مع الداعمين الحاليين أولى من البحث عن داعمين جدد، خصوصاً إذا تمكنت من بناء تجربة شراكة ناجحة
+            وشكلوا عنك سمعة حسنة، وتعزيز علاقتك مع الداعمين يكون من عدة طرق متكاملة، أولها وأهمها هو كفاءة التنفيذ
+            وفاعلية الأثر، وثانيهما التواصل الفعال مع الداعم بالطرق والقنوات التي يفضلها، وتزويده بالمعلومات التي يفضلها
+            أيضاً مثل تقارير قياس الأثر وغيرها.
+        </li>
+        <li>
+            تأكد أن الاستدامة ليست مجرد مسار نشط لدى المنظمة، ينبغي أن تكون ضمن الأهداف الاستراتيجية للمنظمة وتعمل ضمن
+            خطة محددة مسبقاً لتعزيز قدراتها في الاستدامة المالية.
+        </li>
+    </ul>
+</ng-template>
+<ng-template #socialImpactRecommendations>
+    <p>
+        الحديث عن الأثر الاجتماعي لا يقتصر على القياس وتقرير أثر المشروع، فالأثر هو سبب وجود المنظمة، وسبب دعمها، فإذا
+        لم يكن لمنظمتك أثر في المجتمع، ما الداعي لدعمها؟ فالداعم لا يعنيه كثيرا حسن التواصل من منظمتك، ولا كثرة تداول
+        اسمها في منصات التواصل الاجتماعي.
+
+        فتنفيذ برامج مجتمعية لا أثر لها يعني ببساطة أن التبرعات تضيع سدى، فإذاً فالأثر قضية استراتيجية وليس فقط قضية
+        قياس وتحليل.
+    </p>
+    <p>
+        ومنظمتك على ما يبدو تحتاج إلى تطوير قدراتها بشكل كبير في مجال الأثر الاجتماعي كما تبين من التحليل، ولذلك نوصي
+        لهذا الصدد ما يلي:
+    </p>
+    <ul>
+        <li>
+            جعل الأثر الاجتماعي قضية استراتيجية، بدءاً من مراجعة الرؤية والرسالة لتكون بوصلة موجهة لصنع الأثر، ثم
+            الأهداف الاستراتيجية المرتبطة بالمستفيدين والمشاريع، ثم تطوير مؤشرات استراتيجية في الأثر الاجتماعي، والتي
+            ستكون قاعدة لقياس وإدارة الأثر.
+
+            اتباع منهجيات رشيقة في تصميم بيانات قياس الأثر، كالاعتماد على استبيانات قصيرة ومركزة ما أمكن، واستخدام أقل
+            عدد ممكن من المؤشرات.
+        </li>
+        <li>
+            إصدار تقرير سنوي للمنظمة عن الأثر الاجتماعي، التقرير الأول سيستغرق وقتاً وجهداً بالطبع، غير أن الجهد والوقت
+            في الإصدارات اللاحقة للتقرير سيقل. مثل هذه التقارير تساعد المنظمة على فهم الأثر الذي أحدثته، وإدارته
+            وتعظيمه، وتساعدها على تخطيط الأثر للعام المقبل وتحديد ما يجب فعله، وبذات الوقت نشر هذه التقارير مع المعنيين
+            سيعزز من علاقة المنظمة مع شركائها من المجتمع والمانحين وغيرهم.
+        </li>
+    </ul>
+</ng-template>
