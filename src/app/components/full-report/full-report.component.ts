@@ -10,7 +10,7 @@ export class FullReportComponent {
   note: {[level: string]: string} = {
     'التأسيس':     "هذه السمة غير موجودة وتحتاج إلى تأسيس كخطوة أولى، ثم تمكين الجمعية في ممارسة هذه السمة.",
     'الممارسة': "هذه السمة غير موجودة وتحتاج إلى تأسيس كخطوة أولى، ثم تمكين الجمعية في ممارسة هذه السمة.",
-    'التطوير': "السمة موجودة، وفاعلة جزئياً. وتحتاج الجمعية في هذه المرحلة إلى تعزيز قدراتها في ممارسة هذه السمة بشكل أفضل.",
+    'التطور': "السمة موجودة، وفاعلة جزئياً. وتحتاج الجمعية في هذه المرحلة إلى تعزيز قدراتها في ممارسة هذه السمة بشكل أفضل.",
     'الاحترافية': "السمة موجودة وفاعلة أو مطبقة لدى الجمعية، وتحتاج الجمعية إلى تمكينها للمحافظة على هذه السمة."
 
 }
@@ -42,12 +42,13 @@ const REPORT: Report = {
   companyName: 'منظمة كربوج زقزقلو',
   result: 'الاحترافية',
   percentageResult: 78,
+  recommendation: 'l1',
   evaluations: [
     {
       name: 'leadership',
       image: 'assets/images/evaluation1.png',
       level: 'التأسيس',
-      recommendation: 'l2',
+      recommendation: 'l1',
 
 
       analysis: {
@@ -77,7 +78,7 @@ const REPORT: Report = {
         "التخطيط التشغيلي ": ["تضع المنظمة خطة تشغيلية لأعمالها لمدة عام. ", "تضع خطة متابعة تنفيذ الخطة من خلال مؤشرات أداء. "],
         "تضع خطة متابعة تنفيذ الخطة من خلال مؤشرات أداء.": ["تمتلك المنظمة بيئة عمل مناسبة لحجم أعمالها. ", "تمتلك بنية تقنية تلبي احتياج وحجم أعمالها. "]
       },
-      level: 'التطوير',
+      level: 'التطور',
       recommendation: 'l2',
 
 
@@ -92,7 +93,7 @@ const REPORT: Report = {
       },
       recommendation: 'l2',
    
-      level: 'التطوير',
+      level: 'التطور',
       image: 'assets/images/evaluation4.png'
     },
     {
@@ -107,7 +108,7 @@ const REPORT: Report = {
       recommendation: 'l2',
  
 
-      level: 'التطوير',
+      level: 'التطور',
       image: 'assets/images/evaluation5.png'
     },
     {
@@ -121,7 +122,7 @@ const REPORT: Report = {
       },
       recommendation: 'l2',
 
-      level: 'التطوير',
+      level: 'التطور',
       image: 'assets/images/evaluation6.png'
     }
   ]

@@ -1,12 +1,12 @@
 export class Report {
     companyName!: string
-    result: Level = 'التطوير'
+    result: Level = 'التطور'
     percentageResult!: number
-    
+    recommendation!: 'l1' | 'l2'|'l3'|'l4'
     evaluations!: SamModel[]
 }
 
-export const LEVELS = ['التأسيس', 'الممارسة', 'التطوير', 'الاحترافية'] as const
+export const LEVELS = ['التأسيس', 'الممارسة', 'التطور', 'الاحترافية'] as const
 export type Level = typeof LEVELS[number]
 
 

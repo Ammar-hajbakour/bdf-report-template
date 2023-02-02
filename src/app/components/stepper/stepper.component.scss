@@ -1,8 +1,8 @@
 :host{
     --primary-color: #03989e; 
     --secondary-color: #b3e0e1;
-
     .stepper {
+        margin-block-start: 1rem;
         display: flex;
         list-style: none;
         position: relative;
