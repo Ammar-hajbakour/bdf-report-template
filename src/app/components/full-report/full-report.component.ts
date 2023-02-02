@@ -7,12 +7,22 @@ import { Level, LEVELS, Report, SamModel } from 'src/app/report.model';
   styleUrls: ['./full-report.component.scss']
 })
 export class FullReportComponent {
+  note: {[level: string]: string} = {
+    'التأسيس':     "هذه السمة غير موجودة وتحتاج إلى تأسيس كخطوة أولى، ثم تمكين الجمعية في ممارسة هذه السمة.",
+    'الممارسة': "هذه السمة غير موجودة وتحتاج إلى تأسيس كخطوة أولى، ثم تمكين الجمعية في ممارسة هذه السمة.",
+    'التطوير': "السمة موجودة، وفاعلة جزئياً. وتحتاج الجمعية في هذه المرحلة إلى تعزيز قدراتها في ممارسة هذه السمة بشكل أفضل.",
+    'الاحترافية': "السمة موجودة وفاعلة أو مطبقة لدى الجمعية، وتحتاج الجمعية إلى تمكينها للمحافظة على هذه السمة."
 
+}
 
   level:Level = 'الاحترافية'
   report = REPORT
   allSections = REPORT.evaluations
 
+
+  getSectionNote(section:SamModel):string{
+    return this.note[this.report.result]
+  }
 
   getElementValues(values: unknown): string[] {
     return values as string[]
@@ -37,6 +47,9 @@ const REPORT: Report = {
       name: 'leadership',
       image: 'assets/images/evaluation1.png',
       level: 'التأسيس',
+      recommendation: 'l2',
+
+
       analysis: {
         'التوجه والقيم': ['تعمل وفق رسالة ورؤية مفزة', 'تعمل وفق قيم مؤثرة'],
         'الإدارة والاستراتيجة': ['تعمل وفق نظام مؤشرات للأداء', 'تعمل وفق خطة استراتيجية'],
@@ -47,6 +60,9 @@ const REPORT: Report = {
       name: 'solutionDesign',
       image: 'assets/images/evaluation2.png',
       level: 'الاحترافية',
+      recommendation: 'l2',
+ 
+
       analysis: {
         'تقييم الاحتياجات المستقبلية للمستقبل': ['تستخدم طرقاً متكاملة لفهم احتياجات المجتمع. ', 'النظرة الشمولية للاحتياجات الوطنية'],
         'الابتكار المجتمعي': ['تطوّر المنظمة حلولها مع المجتمع المستهدف ', 'تختبر الحلول مع المجتمع قبل الشروع في إطلاق البرامج '],
@@ -61,7 +77,10 @@ const REPORT: Report = {
         "التخطيط التشغيلي ": ["تضع المنظمة خطة تشغيلية لأعمالها لمدة عام. ", "تضع خطة متابعة تنفيذ الخطة من خلال مؤشرات أداء. "],
         "تضع خطة متابعة تنفيذ الخطة من خلال مؤشرات أداء.": ["تمتلك المنظمة بيئة عمل مناسبة لحجم أعمالها. ", "تمتلك بنية تقنية تلبي احتياج وحجم أعمالها. "]
       },
-      level: 'التطور',
+      level: 'التطوير',
+      recommendation: 'l2',
+
+
       image: 'assets/images/evaluation3.png'
     },
     {
@@ -71,7 +90,9 @@ const REPORT: Report = {
         "الدعم من المجتمع ": ["تتواصل بفاعلية مع مختلف فئات المجتمع ", "تستخدم منصات رقمية تتناسب مع الفئة المستهدفة "],
         "إدارة التطوع ": ["تستثمر المتطوعين ", "يستفيد المتطوعون من عملهم مع المنظمة "]
       },
-      level: 'التطور',
+      recommendation: 'l2',
+   
+      level: 'التطوير',
       image: 'assets/images/evaluation4.png'
     },
     {
@@ -83,12 +104,14 @@ const REPORT: Report = {
         "استدامة مصادر التمويل ": ["تنوع مصادر الدعم الخارجي ", "تمتلك استثمارات وأوقاف "],
         "إدارة الاستدامة ": ["تضع الاستدامة كتوجه استراتيجي ", "إدارة مخاطر الاستدامة "]
       },
-      level: 'التطور',
+      recommendation: 'l2',
+ 
+
+      level: 'التطوير',
       image: 'assets/images/evaluation5.png'
     },
     {
       name: 'socialImpact',
-
       analysis: {
         "المتابعة والتقييم والتعلم والمساءلة ": [
           "استخدام المتابعة والتقييم في تنفيذ المشاريع المجتمعية والتعلم منها",
@@ -96,7 +119,9 @@ const REPORT: Report = {
         ],
         "إدارة الأثر ": ["تنفيذ قياس الأثر الاجتماعي ", "الموازنة بين الأثر والأداء المالي "]
       },
-      level: 'التطور',
+      recommendation: 'l2',
+
+      level: 'التطوير',
       image: 'assets/images/evaluation6.png'
     }
   ]
